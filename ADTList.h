@@ -15,7 +15,7 @@ class ADTList{
 		virtual void clear()=0;
 		virtual int indexof(Object*)=0;
 		virtual Object* get(int)const=0;
-		virtual int capacity()const=0;
+		virtual int getCapacity()const=0;
 		virtual bool isEmpty()const=0;
 		virtual bool isFull()const=0;
 

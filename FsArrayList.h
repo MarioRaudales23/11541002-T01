@@ -12,8 +12,8 @@ class FsArrayList:public ADTList{
 		virtual Object* remove(int);
 		virtual Object* first()const;
 		virtual Object* last()const;
-		virtual void clear()=0;
-		virtual int indexof(Object*)const;
+		virtual void clear();
+		virtual int indexof(Object*);
 		virtual Object* get(int)const;
 		virtual int getCapacity()const;
 		virtual bool isEmpty()const;

@@ -36,7 +36,7 @@ bool FsArrayList::insert(Object* e,int p){
 	{
 		return false;
 	}
-	for (int i = getSize(); i > p; ++i)
+	for (int i = getSize(); i > p; --i)
 	{
 		array[i] = array[i-1];
 	}
@@ -46,7 +46,7 @@ bool FsArrayList::insert(Object* e,int p){
 }
 
 void FsArrayList::clear(){
-	for (int i = 0; i < size; ++i)
+	for (int i = 0; i < getSize(); ++i)
 	{
 		if (array[i])
 		{
@@ -54,22 +54,22 @@ void FsArrayList::clear(){
 			array[i] = NULL;
 		}
 	}
+	size=0;
 }
 
 Object* FsArrayList::remove(int p){
-	if (p < 0|| p > size)
+	if (p < 0|| p > getSize())
 	{
 		cerr<<"Posicion invalida";
 	}
 	Object* temp;
 	temp = array[p];
-	delete array[p];
-	array[p] = NULL;
 	for (int i = p; i <size ; ++i)
 	{
 		array[i] = array[i+1];
 	}
 	array[size-1] = NULL;
+	size--;
 	return temp;
 }
 
@@ -80,7 +80,7 @@ Object* FsArrayList::last()const{
 	return array[size-1];
 }
 
-int FsArrayList::indexof(Object* e)const{
+int FsArrayList::indexof(Object* e){
 	for (int i = 0; i < size; ++i)
 	{
 		if (array[i]->equals(e))
