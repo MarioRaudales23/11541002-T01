@@ -61,14 +61,14 @@ Object* FsArrayList::remove(int p){
 	if (p < 0|| p > getSize())
 	{
 		cerr<<"Posicion invalida";
+		return NULL;
 	}
-	Object* temp;
-	temp = array[p];
+	Object* temp = array[p];
+	//delete array[p];
 	for (int i = p; i <size ; ++i)
 	{
 		array[i] = array[i+1];
 	}
-	array[size-1] = NULL;
 	size--;
 	return temp;
 }
@@ -81,6 +81,11 @@ Object* FsArrayList::last()const{
 }
 
 int FsArrayList::indexof(Object* e){
+	if (isEmpty())
+	{
+		cout<<"No hay nada en la lista";
+		return -1;
+	}
 	for (int i = 0; i < size; ++i)
 	{
 		if (array[i]->equals(e))
@@ -92,9 +97,15 @@ int FsArrayList::indexof(Object* e){
 }
 
 Object* FsArrayList::get(int p)const{
+	if (isEmpty())
+	{
+		cout<<"No hay nada en la lista";
+		return NULL;
+	}
 	if (p<0||p>size)
 	{
 		cerr<<"Posicion invalida";
+		return NULL;
 	}else{
 		return array[p];
 	}
